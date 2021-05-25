@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_one.h                                        :+:      :+:    :+:   */
+/*   philo_two.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehande <ehande@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 14:44:43 by ehande            #+#    #+#             */
-/*   Updated: 2021/05/23 22:08:33 by ehande           ###   ########.fr       */
+/*   Updated: 2021/05/23 22:08:15 by ehande           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_ONE_H
-# define PHILO_ONE_H
+#ifndef PHILO_TWO_H
+# define PHILO_TWO_H
 # include <pthread.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <sys/time.h>
 # include <stdlib.h>
+# include <semaphore.h>
 # define ERR_NUM_ARGS "error number of arguments!\n\
 all 5 args:\n1) number_of_philosophers\n2) time_to_die\n\
 3) time_to_eat\n4) time_to_sleep\n5) \
@@ -27,16 +28,15 @@ int				g_m_t_eat;
 typedef struct s_philo
 {
 	int				id;
-	pthread_mutex_t	*left_f;
 	int				num_philos;
-	pthread_mutex_t	*right_f;
 	int				must_t_to_eat;
 	long			t_to_eat;
 	long			t_to_sleep;
 	long			t_to_die;
 	long long		last_t_eat;
 	long long		f_time;
-	pthread_mutex_t	*print;
+	sem_t			*forks;
+	sem_t			*print;
 }				t_philo;
 
 typedef struct s_all
@@ -45,9 +45,9 @@ typedef struct s_all
 	pthread_t		*admin;
 	pthread_t		*philos_pthread;
 	t_philo			*philos;
-	pthread_mutex_t	*forks;
 	long			time;
-	pthread_mutex_t	*print;
+	sem_t			*forks;
+	sem_t			*print;
 }					t_all;
 
 size_t			w(char *str);

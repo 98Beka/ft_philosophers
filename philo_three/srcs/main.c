@@ -6,11 +6,11 @@
 /*   By: ehande <ehande@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 18:28:27 by ehande            #+#    #+#             */
-/*   Updated: 2021/05/22 20:23:37 by ehande           ###   ########.fr       */
+/*   Updated: 2021/05/23 20:26:24 by ehande           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/philo_one.h"
+#include "../incl/philo_three.h"
 
 static void	pars(char **arg, int argc, t_all *all)
 {
@@ -44,9 +44,9 @@ int	main(int argc, char **argv)
 	pars(argv, argc, &all);
 	init(&all);
 	run_simulation(&all);
+	sem_unlink("/fork");
+	sem_unlink("/print");
 	free(all.philos);
-	free(all.print);
-	free(all.forks);
 	free(all.philos_pthread);
 	free(all.admin);
 	return (0);

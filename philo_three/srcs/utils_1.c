@@ -6,11 +6,11 @@
 /*   By: ehande <ehande@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 18:36:30 by ehande            #+#    #+#             */
-/*   Updated: 2021/05/22 20:55:22 by ehande           ###   ########.fr       */
+/*   Updated: 2021/05/22 20:55:15 by ehande           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/philo_one.h"
+#include "../incl/philo_three.h"
 
 static int	msp(const char *str)
 {
